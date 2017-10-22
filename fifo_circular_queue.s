@@ -1,10 +1,13 @@
+; Author : Chinmoy Mohapatra
 ; Circular queue
-; Q_HEAD and Q_TAIL represent the head and tail of the Q, all FF is the default value
-; check Q_FULL and Q_EMPTY register for full or empty
-;		all FF - full/empty
-;		all 00 - not full / not empty
+; Q_HEAD and Q_TAIL represent the head and tail of the Q, starting address is the default value
+; Please note checking for Q empty or full is not taken care yet in this code
 ; 
-;
+; This code takes a Q of length of 15 (32 bit each) does the following operation
+; 		10 inserts
+;		 3 removes
+;		 7 inserts
+; 		13 removes
 
 Q_START_ADDR 	EQU 0x20000000
 Q_SIZE			EQU 15 ;no of elements the Q can store(each 32-bits)- 40bytes
@@ -45,7 +48,7 @@ __main FUNCTION
 	MOV TMP1, #10
 	MOV TMP2, #0
 in_loop1
-
+	; generate some numbers
 	EOR Q_DATA_IN, Q_DATA_IN, #0x36000000
 	SUB Q_DATA_IN, Q_DATA_IN, #15
 	
@@ -70,7 +73,7 @@ in_loop2
 	MOV TMP1, #7
 	MOV TMP2, #0
 in_loop3
-
+	; generate some numbers
 	EOR Q_DATA_IN, Q_DATA_IN, #0x36000000
 	SUB Q_DATA_IN, Q_DATA_IN, #15
 	
@@ -114,6 +117,7 @@ remove1
 ;rem_back
 	;POP {PC}
 	
+; insert operation
 q_insert
 	PUSH {LR}	; store the return address
 	;CMP Q_HEAD, Q_TAIL ; check for empty slots
@@ -131,7 +135,7 @@ insert1 ;tail is not at end of queue
 ;ins_back
 	;POP {PC}
 	
-; to initialize the memory location
+; to initialize the memory location to FF to see it clearly
 Initialize
 	PUSH {LR}			;store the return address
 	
