@@ -1,4 +1,5 @@
-; even or odd
+; Author: Chinmoy Mohapatra
+; 	program for testing even or odd
 ; z =1 even z=0 odd
 ; R1 = all FF for odd and R1 = all 0 for even
 	AREA	ce,CODE,READONLY
