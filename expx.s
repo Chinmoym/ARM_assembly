@@ -2,7 +2,7 @@
 ;	program to find exp(x) in M4-FPU 
 ; Output avaialble in S3 register
 	
-X 	EQU 0x3F800000 ;ieee 754 for 1.0  (xin e^x)
+X 	EQU 0x3F800000 ;ieee 754 for 1.0  (x in e^x)
 TEMP 	EQU	0x3F800000 ;ieee 754 for 1.0
 ;PREC	EQU 0x3A83126F ;precision till decimal  (WIP unable to put into work properly)
 	
